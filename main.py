@@ -1,4 +1,4 @@
 import automata as at
 
-at.dmfa_model()
+at.dfa_model()
 
