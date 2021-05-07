@@ -20,6 +20,12 @@ def dfa_model():
         state = dfa_states[state][i]
     if state == 1:
         print("accepted!   " + input_string)
+        print("/n" + "ready to unlock the scanner? y/n: ")
+        answer = input()
+        if answer == "y":
+            scanner()
+        else:
+            print("Thanks for hanging out gamers")
     else:
         print("declined :( /n")
         print("would you like to try again? y/n: ")
