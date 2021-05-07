@@ -35,6 +35,41 @@ def dfa_model():
         else:
             print("thanks for playing!")
     
-        
+  def scanner():
+    print("format note: please use '-' to denote math, and '--' to denote a dash", "/n")
+    scan = input("please enter the string to be scanned: ")
+    output = switcher(scan) #pseudo switch case to determine the token
+    #output is a dictionary organized by index in the string
+    token_idx = output.keys()
+    for i in range(len(token_idx)):
+        if i == 0:
+            print(scan[0:i], "  " , output[token_idx[i]])
+        elif i < len(token_idx)-1:
+            print(scan[i:i+1], "  ", output[token_idx[i]])
+        else:
+            print(scan[i::], "  ", output[token_idx[i]])
+
+            
+ def switcher(scan):
+    #takes string in, returns array w/ token types and indexs for each token
+    ret = {}
+    for i in range(len(scan)):
+        if scan[i] == "+":
+            ret[i] = "plus"
+        if scan[i] == "-":
+            ret[i] = "minus"
+        if scan[i] == "/":
+            ret[i] = "divide"
+        if scan[i] == "*":
+            ret[i] = "multiply"
+        if scan[i] == "--":
+            ret[i] = "dash"
+        if scan[i] == "**":
+            ret[i] = "exponet"
+    return ret
+            
+    
+    
+    
     
         
