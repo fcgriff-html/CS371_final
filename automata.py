@@ -4,6 +4,10 @@ Created on Sat Apr  3 15:19:26 2021
 
 @author: charl
 """
+
+"""
+ok so basically all we need to do is repurpose this state machine to start scanning once the proper state has been reached, we can have it start a quiz or something, it shouldnt be too crazy
+"""
 def dfa_model():
     print("please enter your string: ")
     input_string = input()
@@ -17,7 +21,14 @@ def dfa_model():
     if state == 1:
         print("accepted!   " + input_string)
     else:
-        print("declined :( ")
+        print("declined :( /n")
+        print("would you like to try again? y/n: ")
+        answer = input()
+        if answer == "y":
+            dfa_model()
+        else:
+            print("thanks for playing!")
+    
         
     
         
