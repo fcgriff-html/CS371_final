@@ -15,23 +15,26 @@ Created on Sat Apr  3 15:19:26 2021
 ok so basically all we need to do is repurpose this state machine to start scanning once the proper state has been reached, we can have it start a quiz or something, it shouldnt be too crazy
 """
 def calc_math(dicty, key_idx, mathstr):
-    total = int(mathstr[0])
+    numli = []
     for i in range(len(mathstr)):
-        if dicty[key_idx[i]]:
-            res = dicty[key_idx[i]]
-            if res == "plus":
-               int2 = int(mathstr[i+2])
-               total = total + int2
-            elif res == "minus":
-                int2 = int(mathstr[i+1])
-                total = total - int2
-            elif res == "divide":
-                int2 = int(mathstr[i+1])
-                total = total / int2
-            elif res == "multiply":
-                int2 = int(mathstr[i+1])
-                total = total * int2
-    print(total)
+        if i not in key_idx:
+            numli.append(int(mathstr[i]))
+    total = 0
+    count = 0
+    for j in numli:
+        if count == 0:
+            total += j
+        elif dicty[key_idx[count-1]] == "plus":
+            total = total + j
+        elif dicty[key_idx[count-1]] == "minus":
+            total = total-j
+        elif dicty[key_idx[count-1]] == "divide":
+            total = total/j
+        elif dicty[key_idx[count-1]] == "multiply":
+            total = total*j
+        count+=1
+        print("step total: ", total)
+    print("your total is: ", total)
             
 
 def scanner():
