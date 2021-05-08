@@ -21,9 +21,11 @@ def calc_math(dicty, key_idx, mathstr):
             numli.append(int(mathstr[i]))
     total = 0
     count = 0
+    #this loop checks the number values against the tokens to compute the equation based on a PMDM order of operations
     for j in numli:
         if count == 0:
-            total += j
+            total += j #starts with this as a base case
+            #the following if statements account for the operation
         elif dicty[key_idx[count-1]] == "plus":
             total = total + j
         elif dicty[key_idx[count-1]] == "minus":
@@ -33,8 +35,8 @@ def calc_math(dicty, key_idx, mathstr):
         elif dicty[key_idx[count-1]] == "multiply":
             total = total*j
         count+=1
-        print("step total: ", total)
-    print("your total is: ", total)
+        print("step total: ", total) #sanity check to make sure the steps described in the first part
+    print("your total is: ", total) #final total
             
 
 def scanner():
